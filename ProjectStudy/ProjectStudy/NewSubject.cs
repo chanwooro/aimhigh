@@ -13,6 +13,9 @@ namespace ProjectStudy
 {
     public partial class NewSubject : Form
     {
+        SqlDataAdapter sda;
+        SqlCommandBuilder scb;
+        DataTable dt;
         public NewSubject()
         {
             
@@ -45,18 +48,21 @@ namespace ProjectStudy
                
                 if (descript == "")
                 {
+                   
 
                     SqlCommand cmd = new SqlCommand("INSERT INTO TopicT (TOPIC) VALUES ('" + textBox1.Text + "')", con);
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
-                    sda.Fill(dt);
+                    sda.Update(dt);
                     this.Close();
+
                 }
                 else
                 {
                     SqlCommand cmd = new SqlCommand("INSERT INTO TopicT (TOPIC, DESCRIPTION) VALUES ('" + textBox1.Text + "', '" +textBox2.Text+ "')", con);
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
+
                     this.Close();
 
 

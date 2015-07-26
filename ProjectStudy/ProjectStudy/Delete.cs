@@ -13,6 +13,10 @@ namespace ProjectStudy
 {
     public partial class Delete : Form
     {
+
+        SqlDataAdapter sda;
+        SqlCommandBuilder scb;
+        DataTable dt;
         public Delete()
         {
             InitializeComponent();
@@ -33,18 +37,7 @@ namespace ProjectStudy
 
             if (res == DialogResult.OK)
             {
-                for (int i = 0; i < checkedListBox1.Items.Count; i++)
-                {
-                    if (checkedListBox1.GetItemChecked(i))
-                    {
-                        checkedListBox1.Items.RemoveAt(i);
-
-
-                    }
-
-
-
-                }
+               
                 foreach (string s in checkedListBox1.CheckedItems)
                 {
 
@@ -59,7 +52,18 @@ namespace ProjectStudy
                     
                 }
 
-              
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    if (checkedListBox1.GetItemChecked(i))
+                    {
+                        checkedListBox1.Items.RemoveAt(i);
+
+
+                    }
+
+
+
+                }
 
                     
 
@@ -68,7 +72,7 @@ namespace ProjectStudy
            
         }
 
-        public void init()
+        private void init()
         {
             DataEntities db = new DataEntities();
             var group = from d in db.TopicTs

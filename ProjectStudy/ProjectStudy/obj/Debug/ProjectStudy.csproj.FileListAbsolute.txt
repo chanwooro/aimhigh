@@ -16,3 +16,21 @@ C:\Users\FFrost\Documents\Visual Studio 2013\Projects\335\ProjectStudy\ProjectSt
 C:\Users\FFrost\Documents\Visual Studio 2013\Projects\335\ProjectStudy\ProjectStudy\bin\Debug\EntityFramework.dll
 C:\Users\FFrost\Documents\Visual Studio 2013\Projects\335\ProjectStudy\ProjectStudy\bin\Debug\EntityFramework.xml
 C:\Users\FFrost\Documents\Visual Studio 2013\Projects\335\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.confirmation.resources
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\bin\Debug\ProjectStudy.exe.config
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.exe
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.pdb
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\bin\Debug\Data.mdf
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\bin\Debug\Data_log.ldf
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\bin\Debug\ProjectStudy.exe
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\bin\Debug\ProjectStudy.pdb
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\bin\Debug\EntityFramework.dll
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\bin\Debug\EntityFramework.xml
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.csprojResolveAssemblyReference.cache
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.confirmation.resources
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.Delete.resources
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.NewSubject.resources
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.QnA.resources
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.Properties.Resources.resources
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.StaffMain.resources
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.StaffPW.resources
+C:\Users\FFrost\Desktop\Aimhigh\ProjectStudy\ProjectStudy\obj\Debug\ProjectStudy.csproj.GenerateResource.Cache
