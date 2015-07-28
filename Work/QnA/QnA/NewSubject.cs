@@ -29,8 +29,10 @@ namespace QnA
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             //When submit commited 2 sql Query required.
             subjecthandler.insertSubject(textBox1.Text, textBox2.Text);
+         
             this.Close();
         }
     }

@@ -24,7 +24,7 @@ namespace QnA
         {
             MainStaff mainstaff = new MainStaff();
 
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\FFrost\Desktop\Aimhigh\Work\QnA\QnA\Database\authentication.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\FFrost\Desktop\Work\QnA\QnA\Database\authentication.mdf;Integrated Security=True;Connect Timeout=30");
             SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From UserIds where USERID='" + textBox1.Text + "' and PASSWORD='" + textBox2.Text + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);

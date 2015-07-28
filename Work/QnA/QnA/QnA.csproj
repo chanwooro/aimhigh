@@ -44,12 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddC_Q.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddC_Q.Designer.cs">
+      <DependentUpon>AddC_Q.cs</DependentUpon>
+    </Compile>
     <Compile Include="databaseHandler.cs" />
     <Compile Include="Delete.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Delete.Designer.cs">
       <DependentUpon>Delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dummy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dummy.Designer.cs">
+      <DependentUpon>Dummy.cs</DependentUpon>
     </Compile>
     <Compile Include="MainStaff.cs">
       <SubType>Form</SubType>
@@ -72,6 +84,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="subjectHandler.cs" />
+    <Compile Include="SubQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubQuestion.Designer.cs">
+      <DependentUpon>SubQuestion.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddC_Q.resx">
+      <DependentUpon>AddC_Q.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dummy.resx">
+      <DependentUpon>Dummy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainStaff.resx">
       <DependentUpon>MainStaff.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +108,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SubQuestion.resx">
+      <DependentUpon>SubQuestion.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
