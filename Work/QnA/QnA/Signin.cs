@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.OleDb;
 
 namespace QnA
 {
     public partial class Signin : Form
     {
+        databaseHandler dbHandler = new databaseHandler();
         public Signin()
         {
             InitializeComponent();
@@ -24,19 +26,34 @@ namespace QnA
         {
             MainStaff mainstaff = new MainStaff();
 
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\FFrost\Desktop\Work\QnA\QnA\Database\authentication.mdf;Integrated Security=True;Connect Timeout=30");
-            SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) From UserIds where USERID='" + textBox1.Text + "' and PASSWORD='" + textBox2.Text + "'", con);
+            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\한국말\subjectData.accdb;Persist Security Info=False;");
+            con.Open();
+            OleDbDataAdapter sda = new OleDbDataAdapter("Select Count(*) From UserIds where USERID='" + textBox1.Text + "' and PASSWORD='" + textBox2.Text + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-
+            con.Close();
+            Console.WriteLine("한국말");
+            //if(dt.Rows[0][0].ToString() == "1")
             if (dt.Rows[0][0].ToString() == "1")
             {
-
-                MainStaff staffMain = new MainStaff();
-                staffMain.Show();
+                string username = textBox1.Text;
+        
+                
+                Console.WriteLine("testing :" + dbHandler.loginProperty(username));
+                if (dbHandler.loginProperty(username) != "1")
+                {
+                    Student student = new Student();
+                    student.username.Text = "Welcome to AimHigh QnA";
+                    student.Show();
+                }
+                else
+                {
+                    MainStaff staffMain = new MainStaff();
+                    staffMain.username.Text = "Welcome " + username;
+                    staffMain.Show();
+                    
+                }
                 this.Hide();
-
-
             }
             else
             {

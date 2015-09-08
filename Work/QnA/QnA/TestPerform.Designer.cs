@@ -1,6 +1,6 @@
 ﻿namespace QnA
 {
-    partial class AddC_Q
+    partial class TestPerform
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.mainViewHtml = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
-            // AddC_Q
+            // mainViewHtml
+            // 
+            this.mainViewHtml.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainViewHtml.Location = new System.Drawing.Point(0, 0);
+            this.mainViewHtml.MinimumSize = new System.Drawing.Size(20, 20);
+            this.mainViewHtml.Name = "mainViewHtml";
+            this.mainViewHtml.Size = new System.Drawing.Size(1264, 922);
+            this.mainViewHtml.TabIndex = 0;
+            this.mainViewHtml.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.mainViewHtml_DocumentCompleted);
+            // 
+            // TestPerform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 922);
-            this.Name = "AddC_Q";
-            this.Text = "AddC_Q";
+            this.Controls.Add(this.mainViewHtml);
+            this.Name = "TestPerform";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Test";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.WebBrowser mainViewHtml;
+
+
     }
 }

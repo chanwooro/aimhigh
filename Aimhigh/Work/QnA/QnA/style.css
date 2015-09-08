@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+#body, #footer, #content, #nav, #logo, #photo, #logo_name, #signup{
+
+margin-left: auto; 
+  margin-right: auto;
+
+}
+body{
+
+background: #D9D9D9;
+}
+
+
+#paragraph{
+margin-left: 10px;
+margin-right: 10px;
+margin-bottom: 30px;
+background: #FFFFCC;
+
+}
+
+#title{
+
+font-size: 40px;
+margin-top: 10px;
+margin-bottom: 20px;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-weight: 900;
+    text-align: left;
+	position: relative;
+	margin-bottom: 20px;
+	padding-left: 15px;
+	border-bottom: 3px solid #cc9900;
+
+
+}
+#question{
+margin-bottom: 20px;
+margin-left: 20px;
+
+margin-right: 20px;
+}
+
+#header{
+padding-left: 100px;
+padding-right: 100px;
+
+}
+#body{
+margin-left: 60px;
+width: 760px;
+padding-top: 25px;
+background: #FFF;
+height: 100%
+}
+
+
+#image img{
+
+max-width: 10px;
+max-height: 20px;
+width: 100%;
+
+display: block;
+    margin-left: auto;
+    margin-right: auto;
+	margin-bottom: 30px;
+	
+
+
+}
+
+.answerbox{
+	margin-left:40px;
+    width: 500px;
+	
+	border: 1px solid #3366FF;
+	border-left: 4px solid #3366FF;
+
+}
+#ans{
+	margin-top: 30px;
+	margin-left: 275px;
+}

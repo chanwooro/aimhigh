@@ -5,24 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlServerCe;
+using System.Data.OleDb;
+using System.Data.Odbc;
 
 namespace QnA
 {
     class databaseHandler
     {
-        protected static SqlConnection con;
-        protected static SqlDataAdapter sda;
+        protected static OleDbConnection con;
+        protected static OleDbDataAdapter sda;
         protected static DataTable dt;
-        protected static SqlCommand cmd;
-        protected static SqlDataReader dr;
+        protected static OleDbCommand cmd;
+        protected static OleDbDataReader dr;
         protected static DataSet ds;
         protected static int pKey;
-        protected static SqlCommand rder;
+        protected static OleDbCommand rder;
         protected static DataSet dsQuestion;
-        protected static SqlDataAdapter sdaQuestion;
-        public void openConnection()
+        protected static OleDbDataAdapter sdaQuestion;
+        protected static OleDbParameter picture;
+        public void openConnection() //"Server=192.168.1.65\\SQLEXPRESS;Database=AimHighData;Integrated Security=true"
         {
-            con = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\FFrost\Desktop\Work\QnA\QnA\subjectData.mdf;Integrated Security=True;Connect Timeout=30");
+            //@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\subjectData.accdb;Persist Security Info=False;"
+            con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\Aimhigh\행정\subjectData.accdb;Persist Security Info=False;");
             con.Open();
 
         }
@@ -30,11 +35,11 @@ namespace QnA
         public void getTopicPrimaryKey(string parent)
         {
             openConnection();
-            rder = new SqlCommand("SELECT Id FROM TopicT WHERE TOPIC='" + parent + "'", con);
-            SqlDataReader rd = rder.ExecuteReader();
-            while (rd.Read())
+            rder = new OleDbCommand("SELECT Id FROM TopicT WHERE TOPIC='" + parent + "'", con);
+            OleDbDataReader dr = rder.ExecuteReader();
+            while (dr.Read())
             {
-                string key = rd.GetValue(0).ToString();
+                string key = dr.GetValue(0).ToString();
                 pKey = int.Parse(key);
 
 
@@ -44,14 +49,14 @@ namespace QnA
 
         }
 
-        public void getQuestionPrimaryKey(string parent)
+        public void getQuestionPrimaryKey(string parent, string topicT)
         {
             openConnection();
-            rder = new SqlCommand("SELECT Id FROM Question WHERE QUESTION='" + parent + "'", con);
-            SqlDataReader rd = rder.ExecuteReader();
-            while (rd.Read())
+            rder = new OleDbCommand("SELECT Question.Id FROM Question INNER JOIN TopicT ON TopicT.Id=Question.topicT WHERE Question.QUESTION='" + parent + "' AND TopicT.TOPIC='"+topicT+"'", con);
+            OleDbDataReader dr = rder.ExecuteReader();
+            while (dr.Read())
             {
-                string key = rd.GetValue(0).ToString();
+                string key = dr.GetValue(0).ToString();
                 pKey = int.Parse(key);
 
 
@@ -59,6 +64,57 @@ namespace QnA
             con.Close();
 
 
+        }
+
+        public void getTestPrimaryKey(string parent)
+        {
+            openConnection();
+            rder = new OleDbCommand("SELECT Id FROM Test WHERE TEST='" + parent + "'", con);
+            OleDbDataReader dr = rder.ExecuteReader();
+            while (dr.Read())
+            {
+                string key = dr.GetValue(0).ToString();
+                pKey = int.Parse(key);
+
+
+            }
+            con.Close();
+
+
+        }
+
+
+        public void getTLQPrimaryKey(string parent, string testParent)
+        {
+            openConnection();
+            rder = new OleDbCommand("SELECT TestListQuestion.Id FROM TestListQuestion INNER JOIN Test ON Test.Id=TestListQuestion.test WHERE TestListQuestion.QUESTION='" + parent + "' AND Test.TEST='" + testParent + "'", con);
+            OleDbDataReader dr = rder.ExecuteReader();
+            while (dr.Read())
+            {
+                string key = dr.GetValue(0).ToString();
+                pKey = int.Parse(key);
+
+
+            }
+            con.Close();
+
+
+        }
+        public string loginProperty(string x)
+        {
+            openConnection();
+            string value = "";
+            rder = new OleDbCommand("SELECT IDENTITY FROM UserIds WHERE USERID='"+x+"'",con);
+            dr = rder.ExecuteReader();
+            while (dr.Read())
+            {
+                value = dr.GetValue(0).ToString();
+
+
+            }
+            con.Close();
+            Console.WriteLine("Value :" + value);
+            return value;
         }
 
 
