@@ -127,15 +127,16 @@ namespace QnA
             {
                 equation = replaceKeyword(equation, data.variable.ToString(), data.value.ToString("0.###"));
             }
-            if(equation.Contains("POW")){
-                equation = PowerSolver(equation);
-            }
+            
             if (equation.Contains("COS") || equation.Contains("SIN") || equation.Contains("TAN"))
             {                
                 equation = trigometry(equation);
 
             }
-
+            if (equation.Contains("POW"))
+            {
+                equation = PowerSolver(equation);
+            }
             // double generatedNumber = Math.Round(randomNumber, 3);
             Console.WriteLine("EQUATION :" + equation);
             string result = new DataTable().Compute(equation, null).ToString();

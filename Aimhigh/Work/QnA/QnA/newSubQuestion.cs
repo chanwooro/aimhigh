@@ -195,7 +195,7 @@ namespace QnA
 
         private void createB_Click(object sender, EventArgs e)
         {
-            string directory = Path.GetDirectoryName(Application.ExecutablePath) + @"\images";
+            string directory = @"L:\images"; //set directory for image. need to create folder to a drive where it is shared to other computers
 
             if(textBox_1.Text != "" && variable.Text != ""){
                 try

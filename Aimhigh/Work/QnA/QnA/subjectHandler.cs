@@ -199,9 +199,9 @@ namespace QnA
                 //y = i + " varchar(255)";
                 //y = string.Join(", ", y);
                 //Problem when reinserting
-              
-                    insert = "INSERT INTO SQ VALUES ('" + names[i] + "', '" + contents[i] + "', " + pKey + ")";
-          
+
+                insert = "INSERT INTO SQ VALUES ('" + names[i] + "', '" + contents[i] + "', " + pKey + ")";
+
 
                 cmd = new OdbcCommand(insert, con);
                 sda = new OdbcDataAdapter(cmd);
@@ -212,24 +212,9 @@ namespace QnA
 
             // cmd = new SqlCommand("INSERT INTO TopicT (TOPIC) VALUES ('"+ contents[0]+ "')", con);
 
-            //Adding row by row
-            //테이블 하나에다가 몰빵?
-            //아니면 테이블 여러게를 만들까.
-
-
-
             con.Close();
-
-
-
-
-
-
-
-
-
         }
-
+        
         private void createSQTable()
         {
             try
