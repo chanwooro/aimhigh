@@ -13,36 +13,40 @@ namespace QnA
 {
     class databaseHandler
     {
-        protected static OdbcConnection con;
-        protected static OdbcDataAdapter sda;
+        protected static OleDbConnection con;
+        protected static OleDbDataAdapter sda;
         protected static DataTable dt;
-        protected static OdbcCommand cmd;
-        protected static OdbcDataReader dr;
+        protected static OleDbCommand cmd;
+        protected static OleDbDataReader dr;
         protected static DataSet ds;
         protected static int pKey;
-        protected static OdbcCommand rder;
+        protected static OleDbCommand rder;
         protected static DataSet dsQuestion;
-        protected static OdbcDataAdapter sdaQuestion;
-        protected static OdbcParameter picture;
+        protected static OleDbDataAdapter sdaQuestion;
+        protected static OleDbParameter picture;
         protected static string dataFileName;
+        protected static string connectionString;
         public void openConnection() //"Server=192.168.1.65\\SQLEXPRESS;Database=AimHighData;Integrated Security=true"
         {
             //@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\subjectData.accdb;Persist Security Info=False;"
-            con = new OdbcConnection("Dsn=QNA");
+
+            con = new OleDbConnection(connectionString);
             con.Open();
 
         }
-        public void setDataConnection(string fileName)
-        {
-            dataFileName = fileName;
+
+        public void setConnectionString(string path){
+            Console.WriteLine("Path :" + path);
+            connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";Persist Security Info=False;";
+            
 
         }
 
         public void getTopicPrimaryKey(string parent)
         {
             openConnection();
-            rder = new OdbcCommand("SELECT Id FROM TopicT WHERE TOPIC='" + parent + "'", con);
-            OdbcDataReader dr = rder.ExecuteReader();
+            rder = new OleDbCommand("SELECT Id FROM TopicT WHERE TOPIC='" + parent + "'", con);
+            OleDbDataReader dr = rder.ExecuteReader();
             while (dr.Read())
             {
                 string key = dr.GetValue(0).ToString();
@@ -58,8 +62,8 @@ namespace QnA
         public void getQuestionPrimaryKey(string parent, string topicT)
         {
             openConnection();
-            rder = new OdbcCommand("SELECT Question.Id FROM Question INNER JOIN TopicT ON TopicT.Id=Question.topicT WHERE Question.QUESTION='" + parent + "' AND TopicT.TOPIC='"+topicT+"'", con);
-            OdbcDataReader dr = rder.ExecuteReader();
+            rder = new OleDbCommand("SELECT Question.Id FROM Question INNER JOIN TopicT ON TopicT.Id=Question.topicT WHERE Question.QUESTION='" + parent + "' AND TopicT.TOPIC='" + topicT + "'", con);
+            OleDbDataReader dr = rder.ExecuteReader();
             while (dr.Read())
             {
                 string key = dr.GetValue(0).ToString();
@@ -75,8 +79,8 @@ namespace QnA
         public void getTestPrimaryKey(string parent)
         {
             openConnection();
-            rder = new OdbcCommand("SELECT Id FROM Test WHERE TEST='" + parent + "'", con);
-            OdbcDataReader dr = rder.ExecuteReader();
+            rder = new OleDbCommand("SELECT Id FROM Test WHERE TEST='" + parent + "'", con);
+            OleDbDataReader dr = rder.ExecuteReader();
             while (dr.Read())
             {
                 string key = dr.GetValue(0).ToString();
@@ -93,8 +97,8 @@ namespace QnA
         public void getTLQPrimaryKey(string parent, string testParent)
         {
             openConnection();
-            rder = new OdbcCommand("SELECT TestListQuestion.Id FROM TestListQuestion INNER JOIN Test ON Test.Id=TestListQuestion.test WHERE TestListQuestion.QUESTION='" + parent + "' AND Test.TEST='" + testParent + "'", con);
-            OdbcDataReader dr = rder.ExecuteReader();
+            rder = new OleDbCommand("SELECT TestListQuestion.Id FROM TestListQuestion INNER JOIN Test ON Test.Id=TestListQuestion.test WHERE TestListQuestion.QUESTION='" + parent + "' AND Test.TEST='" + testParent + "'", con);
+            OleDbDataReader dr = rder.ExecuteReader();
             while (dr.Read())
             {
                 string key = dr.GetValue(0).ToString();
@@ -110,7 +114,7 @@ namespace QnA
         {
             openConnection();
             string value = "";
-            rder = new OdbcCommand("SELECT IDENTITY FROM UserIds WHERE USERID='"+x+"'",con);
+            rder = new OleDbCommand("SELECT IDENTITY FROM UserIds WHERE USERID='" + x + "'", con);
             dr = rder.ExecuteReader();
             while (dr.Read())
             {

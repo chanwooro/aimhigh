@@ -49,6 +49,7 @@
             this.multichoiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainViewHtml = new System.Windows.Forms.WebBrowser();
+            this.newSubject = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -80,6 +81,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.LoadSubject);
+            this.panel1.Controls.Add(this.username);
             this.panel1.Controls.Add(this.listTest);
             this.panel1.Controls.Add(this.testButton);
             this.panel1.Controls.Add(this.deleteButtons);
@@ -135,7 +137,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(191, 33);
             this.button1.TabIndex = 0;
-            this.button1.Text = "New Subject";
+            this.button1.Text = "New Topic";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -150,8 +152,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.newSubject);
             this.splitContainer1.Panel1.Controls.Add(this.removeButton);
-            this.splitContainer1.Panel1.Controls.Add(this.username);
             this.splitContainer1.Panel1.Controls.Add(this.addButton);
             this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer1.Panel1.Controls.Add(this.listQuestion);
@@ -165,9 +167,9 @@
             // 
             // removeButton
             // 
-            this.removeButton.Location = new System.Drawing.Point(174, 88);
+            this.removeButton.Location = new System.Drawing.Point(175, 56);
             this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(154, 26);
+            this.removeButton.Size = new System.Drawing.Size(154, 36);
             this.removeButton.TabIndex = 3;
             this.removeButton.Text = "Remove";
             this.removeButton.UseVisualStyleBackColor = true;
@@ -178,18 +180,18 @@
             this.username.AutoSize = true;
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.username.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.username.Location = new System.Drawing.Point(21, 17);
+            this.username.Location = new System.Drawing.Point(25, 14);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(79, 29);
+            this.username.Size = new System.Drawing.Size(359, 29);
             this.username.TabIndex = 4;
-            this.username.Text = "label1";
+            this.username.Text = "Welcome to Aimhigh QA System";
             this.username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(4, 88);
+            this.addButton.Location = new System.Drawing.Point(3, 56);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(154, 26);
+            this.addButton.Size = new System.Drawing.Size(154, 36);
             this.addButton.TabIndex = 2;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
@@ -199,9 +201,9 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(4, 59);
+            this.comboBox1.Location = new System.Drawing.Point(3, 18);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(324, 23);
+            this.comboBox1.Size = new System.Drawing.Size(203, 23);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.Tag = "";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -215,9 +217,9 @@
             this.listQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.listQuestion.FormattingEnabled = true;
             this.listQuestion.ItemHeight = 18;
-            this.listQuestion.Location = new System.Drawing.Point(-1, 118);
+            this.listQuestion.Location = new System.Drawing.Point(-1, 100);
             this.listQuestion.Name = "listQuestion";
-            this.listQuestion.Size = new System.Drawing.Size(330, 598);
+            this.listQuestion.Size = new System.Drawing.Size(330, 616);
             this.listQuestion.TabIndex = 0;
             this.listQuestion.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listbox1_Click);
             this.listQuestion.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -272,6 +274,16 @@
             this.mainViewHtml.TabIndex = 1;
             this.mainViewHtml.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.mainViewHtml_DocumentCompleted);
             // 
+            // newSubject
+            // 
+            this.newSubject.Location = new System.Drawing.Point(212, 18);
+            this.newSubject.Name = "newSubject";
+            this.newSubject.Size = new System.Drawing.Size(114, 23);
+            this.newSubject.TabIndex = 4;
+            this.newSubject.Text = "New Subject";
+            this.newSubject.UseVisualStyleBackColor = true;
+            this.newSubject.Click += new System.EventHandler(this.newSubject_Click);
+            // 
             // MainStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,8 +299,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -320,6 +332,7 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.WebBrowser mainViewHtml;
         public System.Windows.Forms.Button LoadSubject;
+        public System.Windows.Forms.Button newSubject;
 
     }
 }

@@ -25,18 +25,22 @@ namespace QnA
         Calculator calculator = new Calculator();
         public DataSet ds;
         OpenFileDialog ofd = new OpenFileDialog();
+        SaveFileDialog sfd = new SaveFileDialog();
         static int limitCaller = 1;
         private static string displayResult;
         private static int i;
+        databaseHandler dbHandler;
         private static string equation;
         
         public MainStaff()
         {
             InitializeComponent();
             initialPanelColor();
-            listTopic();
+            //listTopic();
             addButton.Enabled = false;
             removeButton.Enabled = false;
+            newSubject.Enabled = false;
+            Console.WriteLine(System.IO.Path.GetDirectoryName(Application.ExecutablePath));
         }
     
 
@@ -47,20 +51,27 @@ namespace QnA
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {            
             
-            List<string> lists = new List<string>();
-            for (int i = 0; i < comboBox1.Items.Count; i++)
+            string currentCopyFile = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\FileWriter.accdb";
+            sfd.Filter = "access(*.accdb)|*.accdb";
+            sfd.OverwritePrompt = true;
+            dbHandler = new databaseHandler();
+            if(sfd.ShowDialog()  == DialogResult.OK)
             {
-                lists.Add(comboBox1.Items[i].ToString());
+                System.IO.File.Copy(currentCopyFile, sfd.FileName.ToString(), true);
+                newSubject.Enabled = true;
+            }
+            try
+            {
+                dbHandler.setConnectionString(sfd.FileName.ToString());
+                listTopic();
 
-            }       
-            NewSubject newsubject = new NewSubject(lists);
-            newsubject.ShowDialog();
-            //after button function finish update here
-            listTopic();
-            
-            
+            }
+            catch
+            {
+
+            }
 
         }
         private void listbox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -496,11 +507,26 @@ namespace QnA
             ofd.FilterIndex = 2;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                databaseHandler dbHandler = new databaseHandler();
-               
-                Console.WriteLine(ofd.FileName.ToString());
-
+                dbHandler = new databaseHandler();
+                dbHandler.setConnectionString(ofd.FileName.ToString());
+                
+                listTopic();
+                newSubject.Enabled = true;
             }
+        }
+
+        private void newSubject_Click(object sender, EventArgs e)
+        {
+            List<string> lists = new List<string>();
+            for (int i = 0; i < comboBox1.Items.Count; i++)
+            {
+                lists.Add(comboBox1.Items[i].ToString());
+
+            }       
+            NewSubject newsubject = new NewSubject(lists);
+            newsubject.ShowDialog();
+            //after button function finish update here
+            listTopic();
         }
 
        
